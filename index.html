@@ -1,18 +1,29 @@
+
 <!DOCTYPE html>
 <html lang="uk">
   <head>
     <meta charset="UTF-8" />
-    <title>Мурик у доповненій реальності</title>
+    <title>Мурик на поверхні</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/1.7.7/aframe/build/aframe-ar.min.js"></script>
-    <style>body { margin: 0; overflow: hidden; }</style>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-ar@1.8.0/dist/aframe-ar.min.js"></script>
+    <style>
+      body { margin: 0; overflow: hidden; }
+    </style>
   </head>
   <body>
-    <a-scene embedded arjs>
-      <a-marker preset="hiro">
-        <a-entity gltf-model="murik.glb" scale="0.5 0.5 0.5" position="0 0 0" rotation="0 180 0"></a-entity>
-      </a-marker>
-      <a-entity camera></a-entity>
+    <a-scene
+      arjs="trackingMethod: best; sourceType: webcam;"
+      embedded
+      vr-mode-ui="enabled: false"
+      renderer="logarithmicDepthBuffer: true;"
+      device-orientation-permission-ui="enabled: true"
+    >
+      <a-camera position="0 0 0" look-controls-enabled="false"></a-camera>
+
+      <a-entity position="0 0 0">
+        <a-gltf-model src="murik.glb" scale="0.4 0.4 0.4" position="0 0 0"></a-gltf-model>
+      </a-entity>
     </a-scene>
   </body>
 </html>
